@@ -11,7 +11,7 @@ int main() {
     cout << find(str, 4, 4, x) << endl;
     return 0;
 }
-//´ÓÊı×é×óÏÂ½Ç¿ªÊ¼±È½Ï 
+//ä»æ•°ç»„å·¦ä¸‹è§’å¼€å§‹æ¯”è¾ƒ 
 bool find(int str[][5], int rows, int colums, int x) {
 	int i = rows - 1;
 	int j = 0;
