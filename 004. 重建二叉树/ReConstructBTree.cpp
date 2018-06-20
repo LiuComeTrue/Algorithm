@@ -19,7 +19,19 @@ int main(){
     int pre[] = {1, 2, 4, 7, 3, 5, 6, 8}; //前序遍历数组
     int in[] = {4, 7, 2, 1, 5, 3, 8, 6};  //中序遍历数组
 
-    BinaryTree *tree = ReConstructBTree(pre, pre + 7, in, in + 7);
+    //int pre[] = {1} ;
+    //int in[] = {1};
+
+    //int pre[] = {1, 2, 3, 4};
+    //int in[] = {4, 3, 2, 1};
+
+    //int pre[] = {1, 2, 3, 4};
+    //int in[] = {1, 2, 3, 4};
+
+    //int pre[] = {1, 2, 3, 4};
+    //int in[] = {1, 2, 3};
+
+    BinaryTree *tree = ReConstructBTree(pre, pre + sizeof(pre) / 4 - 1, in, in + sizeof(in) / 4 - 1);
     PrePrint(tree);
     cout << endl;
     MidPrint(tree);
@@ -31,6 +43,10 @@ int main(){
 BinaryTree *ReConstructBTree(int *preStart, int *preEnd, int *inStart, int *inEnd) {
     if (preEnd < preStart || inEnd < inStart)
         return NULL;
+    if (preEnd - preStart != inEnd - inStart) {
+        cout << "前序遍历和中序遍历长度不等" << endl;
+        return NULL;
+    }
     BinaryTree *root = new BinaryTree(preStart[0]);
     int i = 0;
     int *index = inStart;
