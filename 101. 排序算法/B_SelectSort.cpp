@@ -16,7 +16,8 @@ void SelectSort(vector<int> &a) {
             if (a[temp] > a[j])
                 temp = j;
         }
-        swap(a, i, temp);
+        if (temp != i)
+            swap(a, i, temp);
     }
 }
 
