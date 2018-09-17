@@ -27,21 +27,18 @@ void QuickSort2(vector<int> &a, int left, int right) {
     if (left >= right)
         return;
     int i = left, j = right;
-    int index = left;
-    int temp = a[index];
+    int temp = a[left];
     while (i < j) {
         while (a[j] >= temp && i < j)
             j--;
-        a[index] = a[j];
-        index = j;
+        a[i] = a[j];
         while (a[i] <= temp && i < j)
             i++;
-        a[index] = a[i];
-        index = i;
+        a[j] = a[i];
     }
-    a[index] = temp;
-    QuickSort2(a, left, index - 1);
-    QuickSort2(a, index + 1, right);
+    a[i] = temp;
+    QuickSort2(a, left, i - 1);
+    QuickSort2(a, i + 1, right);
 }
 
 void swap(vector<int> &a, int i , int j) {
