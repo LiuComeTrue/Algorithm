@@ -13,8 +13,8 @@ void ShellSort(vector<int> &a) {
     while (d >= 1) {
         for (int i = d; i < length; i++) {
             int temp = a[i];
-            int j;
-            for (j = i - d; j>=0&&temp<a[j]; j -= d) {
+            int j = i - d;
+            for (; j >= 0 && temp<a[j]; j -= d) {
                 a[j+d] = a[j];
             }
             a[j+d] = temp;
