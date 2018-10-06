@@ -5,7 +5,7 @@
 #include<sstream>
 #include<cmath>
 using namespace std;
-int f(int x);
+int f(int x, int min, int max);
 
 //桶排序
 void BucketSort(vector<int> &a) {
@@ -28,7 +28,7 @@ void BucketSort(vector<int> &a) {
 
     vector<vector<int> > b(bucketNums);
     for (int i = 0; i < length; i++) {
-        b[f(a[i])].push_back(a[i]);
+        b[f(a[i], min, max)].push_back(a[i]);
     }
 
     //遍历每个桶
@@ -59,8 +59,14 @@ void BucketSort(vector<int> &a) {
 }
 
 //映射函数
-int f(int x) {
-    return x / 10;
+int f(int x, int min, int max) {
+    int n = 0;
+    while (1) {
+        if (min + n * 10 <= x && max + n * 10 >= x)
+            break;
+        n++;
+    }
+    return n;
 }
 
 int main() {
